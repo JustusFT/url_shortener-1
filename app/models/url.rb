@@ -1,7 +1,7 @@
 class Url < ActiveRecord::Base
   validates_presence_of :long_url, :short_url
   validate :is_valid_url
-  before_create :shorten!
+  before_validation :shorten
 
   def is_valid_url
     return false if self.long_url.nil?
@@ -10,7 +10,7 @@ class Url < ActiveRecord::Base
     end
   end
 
-  def shorten!
+  def shorten
     return unless short_url.nil?
     #generate a string of 5 random alphanumeric characters
     str = ""

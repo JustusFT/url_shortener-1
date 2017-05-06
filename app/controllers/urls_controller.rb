@@ -13,6 +13,14 @@ class UrlsController < ApplicationController
     end
   end
 
+  def index
+    @urls = Url.all
+  end
+
+  def show
+    @url = Url.find(params[:id])
+  end
+
   private
   def strong_params
     params.require(:url).permit(:long_url)

@@ -1,0 +1,13 @@
+<%= link_to "New URL", action: "new", controller: "urls" %>
+<table>
+  <tr>
+    <th>long_url</th>
+    <th>short_url</th>
+  </tr>
+  <% @urls.each do |x| %>
+    <tr>
+      <td><%= link_to x.long_url, x %></td>
+      <td><%= x.short_url %></td>
+    </tr>
+  <% end %>
+</table>
