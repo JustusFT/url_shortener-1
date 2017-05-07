@@ -1,7 +1,7 @@
 class Url < ActiveRecord::Base
   validates_presence_of :long_url, :short_url
   validate :is_valid_url
-  before_validation :shorten
+  after_initialize :shorten
 
   def is_valid_url
     return false if self.long_url.nil?

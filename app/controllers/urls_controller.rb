@@ -8,8 +8,8 @@ class UrlsController < ApplicationController
     if @url.save
       redirect_to "/urls"
     else
-      flash[:notice] = @url.errors.messages
-      redirect_to "/urls/new"
+      @errors = @url.errors.messages
+      render "new"
     end
   end
 
